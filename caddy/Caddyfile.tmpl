@@ -1,4 +1,6 @@
-listen 0.0.0.0:8080
+auto_https off
+http_port 8080
+admin off
 php_fastcgi $UPSTREAM {
 	root /
 	read_timeout  10s
