@@ -1,3 +1,6 @@
 #!/bin/bash
 cd /srv/matomo/
-php-fpm 
+# TODO do the init if not present
+php ./install.php
+
+php-fpm
