@@ -4,8 +4,8 @@ ENV MATOMO_VERSION 4.15.1
 RUN dnf install -y --setopt=install_weak_deps=False --best -y php-cli php-fpm php-mysqlnd  && dnf clean all
 WORKDIR /srv
 RUN cd /tmp/ && curl -L https://github.com/matomo-org/matomo/releases/download/$MATOMO_VERSION/matomo-$MATOMO_VERSION.tar.gz > matomo.tar.gz && tar -xf matomo.tar.gz && mv matomo /srv && rm -Rf /tmp/matomo.tar.gz
-EXPOSE 8080
+EXPOSE 9000
+COPY php-fpm.conf /etc/php-fpm.conf
 COPY install.php /usr/local/bin/init.php
 COPY init.sh /usr/local/bin/init.sh
 CMD ["/usr/bin/bash", "/usr/local/bin/init.sh"]
-
