@@ -34,6 +34,7 @@ jobs:
           
             docker push $REGISTRY/$IMAGE:latest
             docker push $REGISTRY/$IMAGE:$DATE
+            cd ..
           done
         env:
           REGISTRY: ghcr.io
