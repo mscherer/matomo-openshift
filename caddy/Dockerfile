@@ -9,4 +9,4 @@ RUN envsubst < /srv/Caddyfile.tmpl > /srv/Caddyfile
 
 EXPOSE 8080
 WORKDIR /srv
-CMD ["/usr/bin/caddy"]
+CMD ["/usr/bin/caddy", "run"]
