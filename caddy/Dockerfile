@@ -8,6 +8,7 @@ ENV UPSTREAM tcp://php-fpm:port
 RUN envsubst < /srv/Caddyfile.tmpl > /srv/Caddyfile
 
 FROM scratch
+EXPOSE 8080
 COPY --from=caddy /usr/bin/caddy /bin/caddy
 COPY --from=caddy /srv/Caddyfile /srv/Caddyfile
 WORKDIR /srv
