@@ -7,8 +7,9 @@
 
 :8080 {
 
+	redir / /index.php
 	php_fastcgi $UPSTREAM {
-		root /srv/matomo/
+		root /srv/matomo
 		read_timeout  10s
 		capture_stderr
 	}
