@@ -6,6 +6,8 @@ WORKDIR /srv
 RUN cd /tmp/ && curl -L https://github.com/matomo-org/matomo/releases/download/$MATOMO_VERSION/matomo-$MATOMO_VERSION.tar.gz > matomo.tar.gz && tar -xf matomo.tar.gz && mv matomo /srv && rm -Rf /tmp/matomo.tar.gz
 EXPOSE 9000
 COPY php-fpm.conf /etc/php-fpm.conf
-COPY install.php /usr/local/bin/install.php
+RUN mv /srv/matomo/config /srv/matomo/config_upstream
+#COPY config.ini.php /src/matomo/config/config.ini.php
+#COPY UnattendedInstallation /srv/matomo/plugins/UnattendedInstallation 
 COPY init.sh /usr/local/bin/init.sh
 CMD ["/usr/bin/bash", "/usr/local/bin/init.sh"]
