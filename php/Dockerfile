@@ -1,7 +1,7 @@
 FROM fedora:latest
 LABEL org.opencontainers.image.source="https://github.com/mscherer/matomo-openshift"
 ENV MATOMO_VERSION 4.15.1
-RUN dnf install -y --setopt=install_weak_deps=False --best -y php-cli php-fpm php-mysqlnd  && dnf clean all
+RUN dnf install -y --setopt=install_weak_deps=False --best -y php-cli php-fpm php-mysqlnd  php-xml php-gd && dnf clean all
 WORKDIR /srv
 RUN cd /tmp/ && curl -L https://github.com/matomo-org/matomo/releases/download/$MATOMO_VERSION/matomo-$MATOMO_VERSION.tar.gz > matomo.tar.gz && tar -xf matomo.tar.gz && mv matomo /srv && rm -Rf /tmp/matomo.tar.gz
 EXPOSE 9000
