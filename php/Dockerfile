@@ -1,4 +1,4 @@
-FROM fedora:latest
+FROM registry.fedoraproject.org/fedora:latest
 LABEL org.opencontainers.image.source="https://github.com/mscherer/matomo-openshift"
 ENV MATOMO_VERSION 4.15.1
 RUN dnf install -y --setopt=install_weak_deps=False --best -y php-cli php-fpm php-mysqlnd  php-xml php-gd && dnf clean all
