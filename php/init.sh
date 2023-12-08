@@ -2,7 +2,9 @@
 set -x
 cd /srv/matomo/
 
-if [ ! -f config/global.php ]; then cp config_upstream/global.php config/global.php; fi;
+for i in global.php global.ini.php ; do
+	if [ ! -f config/$i ]; then cp config_upstream/$i config/$i; fi;
+done;
 
 if [ -v MATOMO_AUTOINST ]; then
 	if [ ! -f /srv/matomo/config/config.ini.php ]; then
